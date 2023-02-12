@@ -1,13 +1,5 @@
-# Sample Hardhat Project
+# Ethereum Honeypot
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+The honeypot attack tries to fool a person into thinking a funded contract is vulnerable to reentrancy.
+This is done by publishing a contract that makes external calls to a contract with a deceivably implemented interface.
+An example of this is the contract `contracts/Pool.sol`. The honeypot attack is implemented in `test/pool.test.ts`.
